@@ -29,4 +29,4 @@ You are a lone player surrounded by slimes that chase you down. Survive as long 
 
 ## Author
 
-Made by Hunter
+Made by Hunter with technical support from the best Mom ever (BotanicalAmy)
