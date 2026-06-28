@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cflxm7hjya8fg"]
+
+[ext_resource type="Texture2D" uid="uid://dj4w8p0ipkwwn" path="res://assets/Newslime.png" id="1_h4dtm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0n1a2"]
+atlas = ExtResource("1_h4dtm")
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 133.0
+offset_bottom = 139.0
+texture = SubResource("AtlasTexture_0n1a2")

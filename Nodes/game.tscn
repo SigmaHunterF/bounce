@@ -1,0 +1,70 @@
+[gd_scene load_steps=12 format=3 uid="uid://bhauu36gkpmc0"]
+
+[ext_resource type="Script" uid="uid://c8f2q870525ar" path="res://Scripts/game.gd" id="1_1sokt"]
+[ext_resource type="PackedScene" uid="uid://cdaepq58h2cqa" path="res://Nodes/player.tscn" id="1_bfc22"]
+[ext_resource type="Texture2D" uid="uid://l0eeukgr4e2a" path="res://assets/TileMap.png" id="1_s24rg"]
+[ext_resource type="PackedScene" uid="uid://cfkuy28luyru2" path="res://Nodes/slime.tscn" id="4_wi60h"]
+[ext_resource type="PackedScene" uid="uid://bgosy2bk56u81" path="res://Nodes/screen.tscn" id="5_y4gxr"]
+[ext_resource type="Script" uid="uid://e4hpb4p15pc5" path="res://Scripts/canvas_modulate.gd" id="6_deiy4"]
+[ext_resource type="Texture2D" uid="uid://bhufw7xko3far" path="res://assets/daynightcycle-gradient-texture.tres" id="7_424rh"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1sokt"]
+texture = ExtResource("1_s24rg")
+0:0/0 = 0
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_wi60h"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_1sokt")
+
+[sub_resource type="Gradient" id="Gradient_y4gxr"]
+offsets = PackedFloat32Array(0, 0.008888889, 0.013333334, 0.15111111, 0.96444446, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.74804986, 0.74804986, 0.74804986, 1, 0.6693154, 0.6693154, 0.6693154, 1, 0.10222222, 0.10222222, 0.10222222, 1, 0, 0, 0, 1, 0.016689345, 0.016689345, 0.016689345, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_deiy4"]
+gradient = SubResource("Gradient_y4gxr")
+width = 240
+height = 240
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="game" type="Node2D"]
+script = ExtResource("1_1sokt")
+metadata/_edit_horizontal_guides_ = [-600.0, -751.0, -1001.0]
+
+[node name="TileMap" type="TileMapLayer" parent="."]
+z_index = -3
+tile_set = SubResource("TileSet_wi60h")
+
+[node name="Player" parent="." instance=ExtResource("1_bfc22")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+rotation = -0.0040866155
+zoom = Vector2(12, 12)
+
+[node name="PointLight2D" type="PointLight2D" parent="Player"]
+scale = Vector2(3.4970136, 3.3171337)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_deiy4")
+texture_scale = 0.41
+
+[node name="Slime" parent="." instance=ExtResource("4_wi60h")]
+position = Vector2(92, -21)
+
+[node name="Screen" parent="." instance=ExtResource("5_y4gxr")]
+offset_left = -79.0
+offset_top = -45.0
+offset_right = 81.0
+offset_bottom = 45.0
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+modulate = Color(0, 0, 0, 1)
+color = Color(0.13333334, 0.14901961, 0.25882354, 1)
+script = ExtResource("6_deiy4")
+gradient = ExtResource("7_424rh")
+
+[connection signal="playerdied" from="Player" to="Slime" method="_on_player_playerdied"]

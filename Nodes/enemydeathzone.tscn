@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxlxvfy4ndu52"]
+
+[ext_resource type="Script" uid="uid://c3ox5nbbl51m4" path="res://Scripts/enemydeathzone.gd" id="1_1gyet"]
+
+[node name="Enemydeathzone" type="Area2D"]
+script = ExtResource("1_1gyet")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

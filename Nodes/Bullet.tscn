@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://gnwateusxcuq"]
+
+[ext_resource type="Script" uid="uid://dacxvl47a07sc" path="res://Scripts/bullet.gd" id="1_wfruj"]
+[ext_resource type="Texture2D" uid="uid://dheheryd7rxai" path="res://assets/Bullet.png" id="3_6t8yt"]
+[ext_resource type="PackedScene" uid="uid://cxlxvfy4ndu52" path="res://Nodes/enemydeathzone.tscn" id="3_yn47m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u8st5"]
+size = Vector2(6, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mkf1f"]
+size = Vector2(13, 5)
+
+[node name="Bullet" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_wfruj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_u8st5")
+
+[node name="Bullet" type="Sprite2D" parent="."]
+texture = ExtResource("3_6t8yt")
+flip_h = true
+
+[node name="Enemydeathzone" parent="." instance=ExtResource("3_yn47m")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemydeathzone"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_mkf1f")
