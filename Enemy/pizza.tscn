@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dvdk84w7vgsji"]
+
+[ext_resource type="Script" uid="uid://bcebrbyjm0a2u" path="res://Scripts/Pizza.gd" id="1_lc3kc"]
+[ext_resource type="Texture2D" uid="uid://i1vx1i52wfqv" path="res://assets/Pizzaslice.png" id="2_5ome8"]
+[ext_resource type="PackedScene" uid="uid://bo7hnesu2gb1s" path="res://Nodes/killzone.tscn" id="3_5ome8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ws6up"]
+size = Vector2(9, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4chu3"]
+size = Vector2(10.75, 10.75)
+
+[node name="Pizza" type="CharacterBody2D" unique_id=1240619830]
+script = ExtResource("1_lc3kc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1104923165]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_ws6up")
+
+[node name="Pizzaslice" type="Sprite2D" parent="." unique_id=554212685]
+position = Vector2(1, 0)
+texture = ExtResource("2_5ome8")
+
+[node name="Killzone" parent="." unique_id=304212459 instance=ExtResource("3_5ome8")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone" unique_id=2099185485]
+position = Vector2(0.375, -0.625)
+shape = SubResource("RectangleShape2D_4chu3")

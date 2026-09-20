@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bpwg7gf4x57am"]
+
+[ext_resource type="Texture2D" uid="uid://dyfr7cmn3mrw6" path="res://assets/Pizza.png" id="1_fvgb6"]
+[ext_resource type="Script" uid="uid://bsoqf57rbqbo2" path="res://Scripts/pizzashooter.gd" id="1_np3fu"]
+[ext_resource type="PackedScene" uid="uid://bo7hnesu2gb1s" path="res://Nodes/killzone.tscn" id="3_ws6up"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxjqb"]
+atlas = ExtResource("1_fvgb6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qsxgr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxjqb")
+}],
+"loop": 1,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cbuqs"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rgyg4"]
+radius = 8.0
+
+[node name="Pizzashooter" type="CharacterBody2D" unique_id=870761359 groups=["player"]]
+script = ExtResource("1_np3fu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=707358561]
+position = Vector2(-1, -1)
+sprite_frames = SubResource("SpriteFrames_qsxgr")
+animation = &"Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=56356584]
+shape = SubResource("CircleShape2D_cbuqs")
+disabled = true
+
+[node name="Killzone" parent="." unique_id=1527473659 instance=ExtResource("3_ws6up")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone" unique_id=256449470]
+shape = SubResource("CircleShape2D_rgyg4")
