@@ -38,6 +38,8 @@ func _physics_process(delta: float) -> void:
 	
 	if collide:
 		var collider = collide.get_collider()
+		if collider and collider.has_method("damage"):
+			collider.damage()
 		queue_free()
 		print("Hit: ", collider.name)
 		 		
