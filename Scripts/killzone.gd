@@ -11,7 +11,7 @@ func _ready():
 func _on_body_entered(body):
 	if body.name == "Player": 
 	  # Optional: check if it's your specific character
-		print("Character entered the area!")
+		
 		# Do something when character enters
 		body.damage()
 

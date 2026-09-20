@@ -5,8 +5,8 @@ const cool_down = .1
 @onready var reload : float = 0
 
 # scene instantiation variables
-@onready var bullet = preload("res://Nodes/Bullet.tscn")
-@onready var screen = preload("res://Nodes/screen.tscn")
+@onready var bullet = preload("uid://gnwateusxcuq")
+@onready var screen = preload("uid://bgosy2bk56u81")
 @onready var slime = preload("uid://cfkuy28luyru2")
 
 var is_alive = true
@@ -74,8 +74,7 @@ func damage():
 	health -= 1
 	
 	health_changed.emit(health)
-#	get_tree().get_first_node_in_group("screen").update_hearts(health)
-	#screen.update_hearts(health)
+#	
 	if health <= 0:
 		emit_signal("playerdied")
 		

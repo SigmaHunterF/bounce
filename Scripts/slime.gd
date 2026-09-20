@@ -13,21 +13,10 @@ signal wavebarprogress(new_wavebar)
 static var wave_number: int = 1
 signal wavechanged(new_wave_number)
 func _ready():
-	# Check if the wave increases
-	#var game = get_node("/root/Game")
-	#if wavebar == 10:
-		
-	#	SPEED += 2000
-		
-	#	print("nextwavea")
-	#	wave_number += 1
-	#	wavechanged.emit(wave_number)
-	#	print(wave_number)
-	#	wavebar = 0
+
 	# Try to find player node - adjust the path to match your scene
 	player = get_node_or_null("../Player")  # if player is sibling
-	# OR
-	# player = get_tree().root.get_node("MainScene/Player")  # adjust path
+
 	
 	if not player:
 		print("ERROR: Player not found!")
@@ -38,7 +27,7 @@ func _physics_process(_delta: float) -> void:
 		move_and_slide()
 	
 func takedamage():
-	#print("ouch")
+
 	health -= 1
 	if health == 0:
 		alive = false
@@ -77,5 +66,5 @@ func _on_player_playerdied() -> void:
 	SPEED = int(50)
 	wavebar = int(0)
 	wave_number = int(1)
-	print(SPEED)
+	
  # Replace with function body.

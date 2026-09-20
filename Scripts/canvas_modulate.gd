@@ -5,8 +5,7 @@ var time:float = 0.0
 func _ready() -> void:
 	pass # Replace with function body
 	
-func changedaytime(wavebar):
-	print(wavebar)
+
 	#if wavebar % 2 == 0:
 	#	$CanvasModulate.visible = false
 	#else:

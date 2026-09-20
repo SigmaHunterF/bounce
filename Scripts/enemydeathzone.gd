@@ -12,3 +12,5 @@ func _on_body_entered(body):
 		
 	if body.has_method("takedamage"):
 		body.takedamage()
+	if body.has_method("takeshooterdamage"):
+		body.takeshooterdamage()

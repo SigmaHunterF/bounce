@@ -10,7 +10,7 @@ var age : float = 0
 
 	
 func shoot(pos : Vector2, dir : Vector2) -> void:
-	#print("pew pew")
+
 	
 	# Initialize the position, direction and speed
 	global_position = pos
@@ -26,7 +26,7 @@ func _physics_process(delta: float) -> void:
 	age += delta
 	
 	#update position based on direction and speed.aw
-
+	
 	# move the bullet
 	var collide = move_and_collide(direction*speed*delta)
 	
@@ -34,9 +34,9 @@ func _physics_process(delta: float) -> void:
 	if collide:
 		# get collision normal
 		var normal = collide.get_normal()
-
+	
 		# update direction for bounce
-		#direction = direction+direction*collide.get_normal()
+
 		direction = direction - 2*(direction.dot(normal))*normal
 		
 	

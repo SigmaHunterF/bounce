@@ -10,5 +10,5 @@ func _ready() -> void:
 	
 func updatetext(wave_number):
 	text = ("Wavenumber:" + str(wave_number))
-	print(wave_number)
+	
 	
